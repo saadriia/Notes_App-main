@@ -11,15 +11,12 @@ class CreateNoteCubit  extends Cubit<CreateNoteCubitState> {
   CreateNoteCubit () : super(CreateNoteCubitInitial());
 
   fetchAllNotes() async {
-    emit(CreateNoteCubitLoading());
-    try {
+   
+ 
       var notsBox = Hive.box<NoteModel>(kNotesBox);
 
       List<NoteModel>notes= notsBox.values.toList();
       emit(CreateNoteCubitSucsees(notes));
-    } catch (e) {
-      emit(CreateNoteCubitFailure(e.toString()));
-      // TODO
-    }
+    }  
   }
-}
+ 
