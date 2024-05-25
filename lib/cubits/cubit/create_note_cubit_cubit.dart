@@ -7,16 +7,13 @@ import '../../view/widgets/Constants.dart';
 
 part 'create_note_cubit_state.dart';
 
-class CreateNoteCubit  extends Cubit<CreateNoteCubitState> {
-  CreateNoteCubit () : super(CreateNoteCubitInitial());
-
-  fetchAllNotes() async {
-   
- 
-      var notsBox = Hive.box<NoteModel>(kNotesBox);
-
-      List<NoteModel>notes= notsBox.values.toList();
-      emit(CreateNoteCubitSucsees(notes));
-    }  
+class CreateNoteCubit extends Cubit<CreateNoteCubitState> {
+  CreateNoteCubit() : super(CreateNoteCubitInitial());
+  
+  List<NoteModel>? notes;
+  fetchAllNotes()   {
+    var notsBox = Hive.box<NoteModel>(kNotesBox);
+    notes = notsBox.values.toList();
+  
   }
- 
+}
